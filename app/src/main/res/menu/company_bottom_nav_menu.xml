@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/circle_button"
+        android:title="职位" />
+
+    <item
+        android:id="@+id/navigation_edit"
+        android:icon="@drawable/circle_button"
+        android:title="简历" />
+
+    <item
+        android:id="@+id/navigation_view"
+        android:icon="@drawable/circle_button"
+        android:title="我的" />
+</menu>

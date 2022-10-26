@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    
+    <EditText
+        android:id="@+id/edit_company_mobile"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:hint="请输入手机号"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edit_company_authCode"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="手机号："
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_company_mobile"
+        app:layout_constraintEnd_toStartOf="@+id/edit_company_mobile"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="验证码："
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edit_company_authCode"
+        app:layout_constraintEnd_toStartOf="@+id/edit_company_authCode"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_company_authCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="请输入验证码"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/edit_company_mobile"/>
+
+    <Button
+        android:id="@+id/btn_company_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:onClick="login"
+        android:text="登录"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_company_authCode" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
