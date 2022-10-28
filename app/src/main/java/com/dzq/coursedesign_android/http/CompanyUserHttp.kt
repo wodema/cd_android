@@ -1,9 +1,11 @@
 package com.dzq.coursedesign_android.http
 
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
+import android.os.Handler
+import android.os.Message
+import com.dzq.coursedesign_android.entity.Result
+import com.google.gson.Gson
+import okhttp3.*
+import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 object CompanyUserHttp {
@@ -13,9 +15,11 @@ object CompanyUserHttp {
         .writeTimeout(10, TimeUnit.SECONDS)
         .build()
 
+    private val gson = Gson()
+
     private val BASE_URL = "http://192.168.1.104/company/user"
 
-    fun smsSignin(mobile: String, authCode: String): Response {
+    fun smsSignin(mobile: String, authCode: String, handler: Handler) {
         val body = FormBody.Builder()
             .add("mobile", mobile)
             .add("authCode", authCode)
@@ -25,7 +29,23 @@ object CompanyUserHttp {
             .url("$BASE_URL/sms/signin")
             .post(body)
             .build()
-        return client.newCall(request).execute()
+        client.newCall(request).enqueue(
+            object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                   e.printStackTrace()
+                    handler.sendMessage(Message().apply {
+                        what = -1
+                    })
+                }
+                override fun onResponse(call: Call, response: Response) {
+                    val result = gson.fromJson(response.body?.string(), Result::class.java)
+                    handler.sendMessage(Message().apply {
+                        what = result.code
+                        obj = result.data
+                    })
+                }
+            }
+        )
     }
 
     fun signin(userEmail: String, password: String): Response {

@@ -2,7 +2,10 @@ package com.dzq.coursedesign_android
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
+import android.os.Message
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -20,6 +23,38 @@ class MainActivity : AppCompatActivity() {
     private lateinit var authCodeEditText: EditText
     private val gson = Gson()
 
+    private val companyUserLoginHandler = object : Handler(Looper.getMainLooper()){
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            when (msg.what) {
+                200 -> {
+                    Log.e("Kotlin", "接收通过sendEmptyMessageDelayed()发送过来的消息")
+                    Log.d("aaa", msg.obj.toString())
+                    val result = msg.obj as Result
+                    Toast.makeText(applicationContext, "登录成功:${result}", Toast.LENGTH_SHORT).show()
+                    val sp = getSharedPreferences("company_user", Context.MODE_PRIVATE)
+                    val user = gson.fromJson(gson.toJson(result.data), CompanyUser::class.java)
+                    sp.edit().apply {
+                        putInt("id", user.id)
+                        putString("username", user.userName)
+                        putInt("companyId", user.companyId)
+                        putString("userMobile", user.userMobile)
+                        putString("userAvatar", user.userAvatar)
+                        putString("userIdcard", user.idCard)
+                        putInt("authStatus", user.authStatus)
+                        apply()
+                    }
+                }
+                // 这里的else相当于Java中switch的default;
+                else -> {
+                    Log.e("asaa", msg.toString())
+                    val result = msg.obj as Result
+                    Toast.makeText(applicationContext, "登录异常:${result.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.company_login)
@@ -31,38 +66,9 @@ class MainActivity : AppCompatActivity() {
         mobileEditText = findViewById(R.id.edit_company_mobile)
         authCodeEditText = findViewById(R.id.edit_company_authCode)
         loginButton.setOnClickListener {
-            Thread {
-                try {
-                    val mobile = mobileEditText.text.toString()
-                    val authCode = authCodeEditText.text.toString()
-                    val response = CompanyUserHttp.smsSignin(mobile = mobile, authCode = authCode)
-                    val responseData = response.body!!.string()
-                    val result = gson.fromJson(responseData, Result::class.java)
-                    if (result.code == -1) {
-                        Looper.prepare()
-                        Toast.makeText(this, "登录异常:${result.message}", Toast.LENGTH_SHORT).show()
-                        Looper.loop()
-                    } else if (result.code == 200) {
-                        val sp = getSharedPreferences("company_user", Context.MODE_PRIVATE)
-                        val user = gson.fromJson(gson.toJson(result.data), CompanyUser::class.java)
-                        sp.edit().apply {
-                            putInt("id", user.id)
-                            putString("username", user.userName)
-                            putInt("companyId", user.companyId)
-                            putString("userMobile", user.userMobile)
-                            putString("userAvatar", user.userAvatar)
-                            putString("userIdcard", user.idCard)
-                            putInt("authStatus", user.authStatus)
-                            apply()
-                        }
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Looper.prepare()
-                    Toast.makeText(this, "登录异常:${e.message}", Toast.LENGTH_SHORT).show()
-                    Looper.loop()
-                }
-            }.start()
+            val mobile = mobileEditText.text.toString()
+            val authCode = authCodeEditText.text.toString()
+            CompanyUserHttp.smsSignin(mobile = mobile, authCode = authCode, handler = companyUserLoginHandler)
         }
     }
 }
