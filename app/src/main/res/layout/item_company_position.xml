@@ -7,11 +7,11 @@
     android:layout_height="140dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/item_company_position"
+        android:id="@+id/item_company_position_card"
         android:layout_marginHorizontal="5dp"
-        android:layout_marginVertical="6dp"
+        android:layout_marginVertical="3dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="20dp"
+        app:cardElevation="5dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clickable="true"
@@ -21,6 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="3dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -34,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:text="活动策划实习生"
                     android:textColor="@color/black"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -44,17 +45,17 @@
                     android:layout_marginStart="20sp"
                     android:text="1人"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     android:textStyle="normal" />
 
                 <TextView
-                    android:id="@+id/item_company_position_require"
+                    android:id="@+id/item_company_position_education"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20sp"
                     android:text="本科"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     android:textStyle="normal" />
             </LinearLayout>
 
@@ -110,7 +111,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/item_company_position_label"
+                    android:id="@+id/item_company_position_major"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -129,8 +130,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:gravity="end">
-                <Button
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                    android:id="@+id/btn_company_position_refresh"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:background="@drawable/circle_button"-->
+<!--                    android:text="刷新"-->
+<!--                    />-->
+                <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/Widget.AppCompat.Button.Borderless"
@@ -140,7 +152,7 @@
                     android:background="@drawable/circle_button"
                     android:text="修改"
                     />
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/Widget.AppCompat.Button.Borderless"

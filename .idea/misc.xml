@@ -4,17 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/drawable/circle_button.xml" value="0.116" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/drawable/edit_text.xml" value="0.153" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/activity_company_main.xml" value="0.12604166666666666" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/activity_main.xml" value="0.2390625" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/company_login.xml" value="0.14084507042253522" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/company_main.xml" value="0.264" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/company_position_save.xml" value="0.1984375" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/compay_main.xml" value="0.21041666666666667" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/fragment_company_position.xml" value="0.14948453608247422" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/fragment_company_resume.xml" value="0.14948453608247422" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/fragment_dashboard.xml" value="0.1875" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/fragment_home.xml" value="0.21041666666666667" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/fragment_notifications.xml" value="0.21041666666666667" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/item_company_position.xml" value="0.264" />
+        <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/student_login.xml" value="0.19791666666666666" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/layout/student_main.xml" value="0.19583333333333333" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21041666666666667" />
         <entry key="..\:/andriod_project/courseDesign_Android/app/src/main/res/menu/company_bottom_nav_menu.xml" value="0.21041666666666667" />

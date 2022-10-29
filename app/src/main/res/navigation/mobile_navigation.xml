@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_company_position">
+
+    <fragment
+        android:id="@+id/navigation_company_position"
+        android:name="com.dzq.coursedesign_android.company.ui.home.CompanyPositionFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_company_resume" />
+
+    <fragment
+        android:id="@+id/navigation_company_resume"
+        android:name="com.dzq.coursedesign_android.company.ui.dashboard.CompanyResumeFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_company_position" />
+
+    <fragment
+        android:id="@+id/navigation_company_user"
+        android:name="com.dzq.coursedesign_android.company.ui.notifications.CompanyUserFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_company_user" />
+</navigation>

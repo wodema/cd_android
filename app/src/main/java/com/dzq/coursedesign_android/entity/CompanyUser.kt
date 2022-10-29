@@ -11,9 +11,9 @@ data class CompanyUser(
 
     val userEmail: String,
 
-    val userAvatar: String,
-
     val idCard: String,
+
+    val companyInfo: CompanyInfo,
 
     val authStatus: Int
 )

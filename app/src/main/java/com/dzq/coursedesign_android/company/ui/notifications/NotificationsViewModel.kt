@@ -1,4 +1,4 @@
-package com.dzq.coursedesign_android.ui.notifications
+package com.dzq.coursedesign_android.company.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

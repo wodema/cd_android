@@ -16,11 +16,15 @@
         android:theme="@style/Theme.CourseDesign_Android"
         tools:targetApi="n">
         <activity
-            android:name=".student_main"
+            android:name=".company.CompanyMainActivity"
             android:exported="false"
-            android:label="@string/title_activity_student_main" />
+            android:label="@string/title_activity_company_main" />
         <activity
-            android:name=".MainActivity"
+            android:name=".company.CompanyPositionSaveActivity"
+            android:exported="false"
+            android:label="@string/title_activity_company_position_save" />
+        <activity
+            android:name=".company.CompanyLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

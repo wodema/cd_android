@@ -4,12 +4,11 @@ import android.os.Handler
 import android.os.Message
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.utils.GsonUtil
-import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-object CompanyUserHttp {
+object SmsHttp {
     private val client: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(10, TimeUnit.SECONDS)
@@ -18,20 +17,14 @@ object CompanyUserHttp {
 
     private val BASE_URL = "http://192.168.1.104/company/user"
 
-    fun smsSignin(mobile: String, authCode: String, handler: Handler) {
-        val body = FormBody.Builder()
-            .add("mobile", mobile)
-            .add("authCode", authCode)
-            .build()
-
+    fun sms(mobile: String, handler: Handler) {
         val request: Request = Request.Builder()
-            .url("$BASE_URL/sms/signin")
-            .post(body)
+            .url("$BASE_URL/sms?mobile=$mobile")
             .build()
         client.newCall(request).enqueue(
             object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
-                   e.printStackTrace()
+                    e.printStackTrace()
                     handler.sendMessage(Message().apply {
                         what = -1
                         obj = Result(code = -1, message = "网络异常", data = null)
@@ -47,19 +40,4 @@ object CompanyUserHttp {
             }
         )
     }
-
-    fun signin(userEmail: String, password: String): Response {
-        val body = FormBody.Builder()
-            .add("email", userEmail)
-            .add("password", password)
-            .build()
-
-        val request: Request = Request.Builder()
-            .url("$BASE_URL/signin")
-            .post(body)
-            .build()
-        return client.newCall(request).execute()
-    }
-
-
 }
