@@ -6,4 +6,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_company_main">CompanyMainActivity</string>
     <string name="title_activity_company_position_save">companyPositionSave</string>
+    <string name="title_activity_company_info_save">CompanyInfoSave</string>
 </resources>

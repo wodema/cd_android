@@ -1,4 +1,4 @@
-package com.dzq.coursedesign_android.company.ui.home
+package com.dzq.coursedesign_android.student.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
@@ -15,33 +16,30 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dzq.coursedesign_android.R
 import com.dzq.coursedesign_android.adpter.CompanyPositionAdapter
+import com.dzq.coursedesign_android.adpter.StudentPositionAdapter
 import com.dzq.coursedesign_android.company.CompanyPositionSaveActivity
-import com.dzq.coursedesign_android.databinding.FragmentCompanyPositionBinding
+import com.dzq.coursedesign_android.databinding.FragmentStudentPositionBinding
 import com.dzq.coursedesign_android.entity.CompanyPosition
 import com.dzq.coursedesign_android.entity.CompanyUser
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.http.CompanyPositionHttp
 import com.dzq.coursedesign_android.utils.GsonUtil
 
-class CompanyPositionFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private var _binding: FragmentCompanyPositionBinding? = null
+    private var _binding: FragmentStudentPositionBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-
-    private val companyPositionHandler = object : Handler(Looper.getMainLooper()) {
+    private val studentPositionHandler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: android.os.Message) {
             super.handleMessage(msg)
             when (msg.what) {
                 200 -> {
                     val result = msg.obj as Result
-                    val companyPositionList = GsonUtil.fromJson<MutableList<CompanyPosition>>(GsonUtil.objToJson(result.data))
-                    val recyclerView = binding.rvCompanyPosition
+                    val studentPositionList = GsonUtil.fromJson<MutableList<CompanyPosition>>(
+                        GsonUtil.objToJson(result.data))
+                    val recyclerView = binding.rvStudentPosition
                     recyclerView.layoutManager = LinearLayoutManager(context)
-                    recyclerView.adapter = CompanyPositionAdapter(companyPositionList)
+                    recyclerView.adapter = StudentPositionAdapter(studentPositionList)
                 }
                 else -> {
                     val result = msg.obj as Result
@@ -51,26 +49,26 @@ class CompanyPositionFragment : Fragment() {
         }
     }
 
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCompanyPositionBinding.inflate(inflater, container, false)
+
+        _binding = FragmentStudentPositionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        initView(root)
-        getPositionsByCompanyId()
+        getPositions()
 
         return root
     }
 
-    private fun initView(root: View) {
-        root.findViewById<AppCompatButton>(R.id.btn_company_position_add).setOnClickListener {
-            Intent(context, CompanyPositionSaveActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
+    private fun getPositions() {
+        CompanyPositionHttp.getCompanyPositionList(studentPositionHandler)
     }
 
     override fun onDestroyView() {
@@ -78,14 +76,4 @@ class CompanyPositionFragment : Fragment() {
         _binding = null
     }
 
-    private fun getPositionsByCompanyId() {
-        context?.getSharedPreferences("company_user", Context.MODE_PRIVATE)?.apply {
-            val companyUser = GsonUtil.fromJson<CompanyUser>(getString("data", ""))
-            if (companyUser.companyId == -1) {
-                Toast.makeText(context, "暂未登录", Toast.LENGTH_SHORT).show()
-                return
-            }
-            CompanyPositionHttp.getCompanyPositionList(companyUser.companyId, companyPositionHandler)
-        }
-    }
 }

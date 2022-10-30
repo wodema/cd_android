@@ -2,32 +2,34 @@ package com.dzq.coursedesign_android.http
 
 import android.os.Handler
 import android.os.Message
+import com.dzq.coursedesign_android.entity.CompanyInfo
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.utils.GsonUtil
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-object StudentHttp {
+object CompanyInfoHttp {
+
     private val client: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(10, TimeUnit.SECONDS)
         .writeTimeout(10, TimeUnit.SECONDS)
         .build()
 
-    private val BASE_URL = "http://192.168.1.104/student"
+    private val BASE_URL = "http://192.168.1.104/company/info"
 
-    fun smsSignin(mobile: String, authCode: String, handler: Handler) {
-        val body = FormBody.Builder()
-            .add("mobile", mobile)
-            .add("authCode", authCode)
+    fun save(companyInfo: CompanyInfo, handler: Handler) {
+        val requestBody = GsonUtil.objToJson(companyInfo)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+        val request = Request.Builder()
+            .url(BASE_URL)
+            .put(requestBody)
             .build()
-
-        val request: Request = Request.Builder()
-            .url("$BASE_URL/sms/signin")
-            .post(body)
-            .build()
-        return client.newCall(request).enqueue(
+        val call = client.newCall(request)
+        return call.enqueue(
             object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     e.printStackTrace()
@@ -48,16 +50,4 @@ object StudentHttp {
         )
     }
 
-    fun signin(userEmail: String, password: String): Response {
-        val body = FormBody.Builder()
-            .add("email", userEmail)
-            .add("password", password)
-            .build()
-
-        val request: Request = Request.Builder()
-            .url("$BASE_URL/signin")
-            .post(body)
-            .build()
-        return client.newCall(request).execute()
-    }
 }

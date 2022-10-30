@@ -23,5 +23,7 @@ data class CompanyPosition(
 
     var positionNumber: String? = null,
 
-    var positionRequirement: String? = null
+    var positionRequirement: String? = null,
+
+    var companyLogo: String? = null
 ) : Parcelable

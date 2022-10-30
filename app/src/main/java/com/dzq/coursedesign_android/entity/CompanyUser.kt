@@ -1,19 +1,23 @@
 package com.dzq.coursedesign_android.entity
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class CompanyUser(
-    val id: Int,
+    var id: Int? = null,
 
-    val companyId: Int,
+    var companyId: Int? = null,
 
-    val userName: String,
+    var userName: String? = null,
 
-    val userMobile: String,
+    var userMobile: String? = null,
 
-    val userEmail: String,
+    var userEmail: String? = null,
 
-    val idCard: String,
+    var idCard: String? = null,
 
-    val companyInfo: CompanyInfo,
+    var companyInfo: CompanyInfo? = null,
 
-    val authStatus: Int
-)
+    var authStatus: Int? = null
+) : Parcelable

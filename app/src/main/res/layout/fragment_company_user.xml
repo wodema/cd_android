@@ -6,17 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".company.ui.notifications.CompanyUserFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_company_info"
+        android:layout_margin="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/btn_company_user_auth"
+        android:textColor="@color/black"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_button"
+        android:text="实名认证"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toBottomOf="@id/btn_company_user_auth"
+        app:layout_constraintBottom_toTopOf="@+id/btn_user_mobile_bind"
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/btn_company_info"
+        android:textColor="@color/black"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_button"
+        android:text="公司信息"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintTop_toBottomOf="@id/btn_company_info"
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/btn_user_mobile_bind"
+        android:textColor="@color/black"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_button"
+        android:text="更绑手机号"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        app:layout_constraintBottom_toTopOf="@id/btn_logout"
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/btn_change_to_student"
+        android:textColor="@color/black"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_button"
+        android:text="切换到学生端"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/btn_logout"
+        android:textColor="@color/black"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/circle_button"
+        android:text="退出登录"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
