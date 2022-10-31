@@ -50,4 +50,29 @@ object CompanyInfoHttp {
         )
     }
 
+    fun get(companyId: Int, handler: Handler) {
+        val request = Request.Builder()
+            .url("$BASE_URL/$companyId")
+            .build()
+        client.newCall(request).enqueue(
+            object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                    handler.sendMessage(Message().apply {
+                        what = -1
+                        obj = Result(code = -1, message = "网络异常", data = null)
+                    })
+                }
+                override fun onResponse(call: Call, response: Response) {
+                    val result = GsonUtil.fromJson<Result>(response.body?.string())
+                    val message = Message().apply {
+                        what = result.code
+                        obj = result
+                    }
+                    handler.sendMessage(message)
+                }
+            }
+        )
+    }
+
 }

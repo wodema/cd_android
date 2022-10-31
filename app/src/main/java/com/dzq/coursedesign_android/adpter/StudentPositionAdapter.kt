@@ -23,6 +23,7 @@ import com.dzq.coursedesign_android.company.CompanyPositionSaveActivity
 import com.dzq.coursedesign_android.entity.CompanyPosition
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.http.CompanyPositionHttp
+import com.dzq.coursedesign_android.student.PositionDetailActivity
 
 class StudentPositionAdapter(
     private val itemInfoList: MutableList<CompanyPosition>,
@@ -31,7 +32,6 @@ class StudentPositionAdapter(
         return StudentPositionViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_student_position, parent, false))
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: StudentPositionViewHolder, @SuppressLint("RecyclerView") position: Int) {
         holder.itemView.apply {
             findViewById<TextView>(R.id.item_student_position_name).text = itemInfoList[position].positionName
@@ -42,6 +42,12 @@ class StudentPositionAdapter(
             findViewById<TextView>(R.id.item_student_position_major).text = itemInfoList[position].positionMajor
             itemInfoList[position].companyLogo?.let {
                 Glide.with(this.context).load(it).into(findViewById(R.id.item_company_logo))
+            }
+            findViewById<TextView>(R.id.ll_student_position_info).setOnClickListener {
+                Intent(context, PositionDetailActivity::class.java).apply {
+                    putExtra("companyPosition", itemInfoList[position])
+                    context.startActivity(this)
+                }
             }
         }
 

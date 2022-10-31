@@ -28,6 +28,7 @@ class CompanyPositionSaveActivity : AppCompatActivity() {
     private lateinit var positionWorkCityEditText: EditText
     private lateinit var positionEducationEditText: EditText
     private lateinit var positionMajorEditText: EditText
+    private lateinit var positionResponsibilityEditText: EditText
     private lateinit var positionSaveButton: Button
 
     private val companyPositionSaveHandler = object : Handler(Looper.getMainLooper()) {
@@ -60,6 +61,7 @@ class CompanyPositionSaveActivity : AppCompatActivity() {
             positionWorkCityEditText.setText(this.workCity)
             positionEducationEditText.setText(this.education)
             positionRequirementEditText.setText(this.positionRequirement)
+            positionResponsibilityEditText.setText(this.positionResponsibility)
             companyPosition = this
         }
         positionSaveButton.setOnClickListener {
@@ -70,6 +72,7 @@ class CompanyPositionSaveActivity : AppCompatActivity() {
                 positionSalary = positionSalaryEditText.text.toString()
                 workCity = positionWorkCityEditText.text.toString()
                 education = positionEducationEditText.text.toString()
+                positionResponsibility = positionResponsibilityEditText.text.toString()
                 getSharedPreferences("company_user", Context.MODE_PRIVATE).apply {
                     getString("data", null)!!.apply {
                         val companyUser = GsonUtil.fromJson<CompanyUser>(this)
@@ -86,6 +89,7 @@ class CompanyPositionSaveActivity : AppCompatActivity() {
         positionMajorEditText = findViewById(R.id.company_position_major)
         positionSalaryEditText = findViewById(R.id.company_position_salary)
         positionRequirementEditText = findViewById(R.id.company_position_requirement)
+        positionResponsibilityEditText = findViewById(R.id.company_position_responsibility)
         positionWorkCityEditText = findViewById(R.id.company_position_city)
         positionEducationEditText = findViewById(R.id.company_position_education)
         positionNumberEditText = findViewById(R.id.company_position_number)

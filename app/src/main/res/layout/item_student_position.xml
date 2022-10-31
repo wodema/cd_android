@@ -32,7 +32,7 @@
                 android:id="@+id/item_company_logo"
                 android:scaleType="centerCrop"
                 app:roundPercent="1"
-                android:src="@drawable/company_logo"
+                android:src="@drawable/company"
                 tools:ignore="ImageContrastCheck"
                 android:focusable="true" />
 

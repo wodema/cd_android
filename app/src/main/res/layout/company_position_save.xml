@@ -246,6 +246,37 @@
                 android:inputType="textMultiLine" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="岗位责任"
+                android:textStyle="bold"
+                android:layout_gravity="top"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_marginEnd="10dp"
+                android:id="@+id/company_position_responsibility"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textStyle="normal"
+                android:gravity="top"
+                android:hint="请输入岗位责任"
+                android:minLines="8"
+                android:maxLines="10"
+                android:background="@android:drawable/edit_text"
+                android:textSize="20sp"
+                android:inputType="textMultiLine" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/ll_company_position_save"
