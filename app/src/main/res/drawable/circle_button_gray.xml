@@ -4,8 +4,8 @@
     tools:ignore="ExtraText">
     android:shape="oval"
     android:useLevel="false">
-    <solid android:color="#358EFA" />
-    <stroke android:width="0.2dip" android:color="#358EFA" />
+    <solid android:color="#A5A9AE" />
+    <stroke android:width="0.2dip" android:color="#A5A9AE" />
     <size
         android:width="80dp"
         android:height="30dp" />

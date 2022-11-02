@@ -7,14 +7,23 @@
 
     <fragment
         android:id="@+id/navigation_student_position"
-        android:name="com.dzq.coursedesign_android.student.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:name="com.dzq.coursedesign_android.student.ui.position.StudentPositionFragment"
+        android:label="职位"
         tools:layout="@layout/fragment_student_position" />
+
+    <fragment
+        android:id="@+id/navigation_student_resume"
+        android:name="com.dzq.coursedesign_android.student.ui.resume.StudentResumeFragment"
+        android:label="简历"
+        tools:layout="@layout/fragment_student_resume"
+       />
 
 
     <fragment
         android:id="@+id/navigation_student_user"
-        android:name="com.dzq.coursedesign_android.student.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:name="com.dzq.coursedesign_android.student.ui.user.StudentUserFragment"
+        android:label="我的"
         tools:layout="@layout/fragment_student_user" />
+
+
 </navigation>

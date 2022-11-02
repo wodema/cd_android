@@ -1,4 +1,4 @@
-package com.dzq.coursedesign_android.company.ui.home
+package com.dzq.coursedesign_android.company.ui.position
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dzq.coursedesign_android.R
 import com.dzq.coursedesign_android.adpter.CompanyPositionAdapter
@@ -85,7 +84,7 @@ class CompanyPositionFragment : Fragment() {
                 Toast.makeText(context, "暂未登录", Toast.LENGTH_SHORT).show()
                 return
             }
-            CompanyPositionHttp.getCompanyPositionList(companyUser.companyId, companyPositionHandler)
+            CompanyPositionHttp.getCompanyPositionList(companyUser.companyId!!, companyPositionHandler)
         }
     }
 }

@@ -54,7 +54,7 @@ class CompanyPositionSaveActivity : AppCompatActivity() {
         setContentView(R.layout.company_position_save)
         initView()
         intent.getParcelableExtra<CompanyPosition?>("companyPosition")?.apply {
-            positionNameEditText.setText(this.companyName)
+            positionNameEditText.setText(this.positionName)
             positionNumberEditText.setText(this.positionNumber)
             positionMajorEditText.setText(this.positionMajor)
             positionSalaryEditText.setText(this.positionSalary)

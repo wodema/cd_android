@@ -43,7 +43,7 @@ class StudentPositionAdapter(
             itemInfoList[position].companyLogo?.let {
                 Glide.with(this.context).load(it).into(findViewById(R.id.item_company_logo))
             }
-            findViewById<TextView>(R.id.ll_student_position_info).setOnClickListener {
+            findViewById<LinearLayout>(R.id.ll_student_position_info).setOnClickListener {
                 Intent(context, PositionDetailActivity::class.java).apply {
                     putExtra("companyPosition", itemInfoList[position])
                     context.startActivity(this)

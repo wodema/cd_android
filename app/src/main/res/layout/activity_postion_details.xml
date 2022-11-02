@@ -8,11 +8,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+
         android:orientation="vertical"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#358EFA">
+            <ImageView
+                android:id="@+id/detail_img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/left"
+                android:clickable="true"
+                android:focusable="true"
+                app:tint="@color/white">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="3dp"
+                android:text="岗位详情"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="4dp"
+            android:background="#358EFA">
             <androidx.constraintlayout.utils.widget.ImageFilterView
                 android:clickable="true"
                 android:layout_width="64dp"
@@ -20,18 +49,19 @@
                 android:layout_margin="8dp"
                 android:id="@+id/detail_company_logo"
                 android:scaleType="centerCrop"
-                app:roundPercent="1"
                 android:src="@drawable/company"
                 android:focusable="true" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:layout_marginStart="4dp"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/detail_company_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="测试公司"
                     android:textSize="16dp"
                     />
@@ -42,12 +72,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13dp"
+                        android:textColor="@color/white"
                         android:text="公司邮箱："/>
                     <TextView
                         android:id="@+id/detail_company_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13dp"
+                        android:textColor="@color/white"
                         android:text="weicsheng@163.com"/>
                 </LinearLayout>
 
@@ -58,10 +90,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13dp"
+                        android:textColor="@color/white"
                         android:text="公司联系人号码："/>
                     <TextView
                         android:id="@+id/detail_company_mobile"
                         android:textSize="13dp"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="17728852235"/>
@@ -73,10 +107,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="13dp"
+                        android:textColor="@color/white"
                         android:text="公司地址："/>
                     <TextView
                         android:id="@+id/detail_company_address"
                         android:textSize="13dp"
+                        android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="长湴"/>
@@ -117,6 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
                         android:id="@+id/detail_company_introduction"
+                        android:textColor="#493C3C"
                         android:textSize="13dp"
                         android:text="实打实的卡结束了多久啊啊首都加拉加斯的绿卡就是的刻录机爱丽丝按时打卡拉开圣诞节垃圾"/>
                 </LinearLayout>
@@ -194,6 +231,7 @@
                             app:layout_constraintTop_toBottomOf="@id/detail_position_name"
                             app:layout_constraintStart_toStartOf="@id/detail_position_name"
                             android:text="工作城市："
+                            android:textColor="#817C7C"
                             android:textSize="13dp"
                             />
                         <TextView
@@ -213,6 +251,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBaseline_toBaselineOf="@+id/detail_work_city_label"
                             android:textSize="11dp"
+                            android:textColor="#493C3C"
                             android:text="本科"
                             />
                         <TextView
@@ -224,6 +263,7 @@
                             android:id="@+id/detail_position_major_label"
                             android:text="相关专业："
                             android:textSize="13dp"
+                            android:textColor="#817C7C"
                             />
                         <TextView
                             android:layout_width="wrap_content"
@@ -231,7 +271,8 @@
                             android:id="@+id/detail_position_major"
                             app:layout_constraintBaseline_toBaselineOf="@id/detail_position_major_label"
                             app:layout_constraintStart_toEndOf="@id/detail_position_major_label"
-                            android:text="软件工程"/>
+                            android:text="软件工程"
+                            android:textColor="#493C3C"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
@@ -272,6 +313,7 @@
                         android:layout_marginTop="3dp"
                         android:id="@+id/detail_position_responsibility"
                         android:textSize="13dp"
+                        android:textColor="#493C3C"
                         android:text="杜拉克斯基的拉伸角动量喀什觉得垃圾死了阿斯顿卢卡斯建档立卡介绍了肯定就爱上了按时打卡了肯定就挨了肯定就拉开建设的了"/>
                 </LinearLayout>
 
@@ -311,7 +353,48 @@
                         android:layout_marginTop="3dp"
                         android:id="@+id/detail_position_requirement"
                         android:textSize="13dp"
+                        android:textColor="#493C3C"
                         android:text="杜拉克斯基的拉伸角动量喀什觉得垃圾死了阿斯顿卢卡斯建档立卡介绍了肯定就爱上了按时打卡了肯定就挨了肯定就拉开建设的了"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="温馨提示"
+                        android:textColor="#E42441"/>
+                    <View
+                        android:layout_marginVertical="3dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f3f3f3"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:id="@+id/detail_notice"
+                        android:textSize="13dp"
+                        android:textColor="#493C3C"
+                        android:text="云职校招严禁用人单位做出任何损害求职者的违法违规行为，包括但不限于收取培训费、贷款培训、扣押证件、收取财物、向求职者集资、让求职者入股、诱导求职者异地入职、异地参与培训、诱导带宽】涉嫌非法传销等，一旦发现此类行为，可联系客服举报，情况禁忌或严重的建议报警处理"/>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -323,18 +406,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center_horizontal"
         >
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="7dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/btn_company_position_send"
-            android:textColor="@color/black"
-            android:layout_marginEnd="10dp"
+            android:id="@+id/btn_company_position_apply"
+            android:textColor="@color/white"
             android:background="@drawable/circle_button"
-            android:text="投递"
+            android:textSize="17dp"
+            android:text="一键投递"
             />
     </LinearLayout>
 

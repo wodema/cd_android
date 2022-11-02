@@ -23,8 +23,9 @@ object OssHttp {
 
     private val BASE_URL = "http://192.168.1.104/oss/fileUpload"
 
-    fun upload(photoPath: String?, handler: Handler) {
-        val file = File(photoPath!!)
+
+    fun upload(filePath: String?, handler: Handler) {
+        val file = File(filePath!!)
         val body = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .addFormDataPart(

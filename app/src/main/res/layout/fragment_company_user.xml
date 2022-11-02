@@ -4,71 +4,226 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".company.ui.notifications.CompanyUserFragment">
+    android:background="@drawable/gradient_style"
+    tools:context=".company.ui.user.CompanyUserFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
+    <LinearLayout
+        android:id="@+id/ll_top_user"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_company_info"
-        android:layout_margin="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/ll_company_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:id="@+id/btn_company_user_auth"
-        android:textColor="@color/black"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/circle_button"
-        android:text="实名认证"
-        />
+        android:gravity="center"
+        android:background="#358EFA">
 
-    <androidx.appcompat.widget.AppCompatButton
-        app:layout_constraintTop_toBottomOf="@id/btn_company_user_auth"
-        app:layout_constraintBottom_toTopOf="@+id/btn_user_mobile_bind"
-        android:layout_margin="3dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="公司信息"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:id="@+id/btn_company_info"
-        android:textColor="@color/black"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/circle_button"
-        android:text="公司信息"
-        />
+        android:id="@+id/ll_company_info"
+        app:layout_constraintTop_toBottomOf="@+id/ll_top_user"
+        android:layout_marginTop="5dp">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:paddingVertical="5dp">
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:clickable="true"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_margin="8dp"
+                    android:id="@+id/card_company_logo"
+                    android:scaleType="centerCrop"
+                    app:roundPercent="1"
+                    android:src="@drawable/company"
+                    tools:ignore="ImageContrastCheck"
+                    android:focusable="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="3dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="公司名称："
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/text_company_name"
+                            android:text="待完善"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="手机号："
+                            android:textColor="#817C7C"
+                            android:textSize="13dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/text_company_mobile"
+                            android:text="待完善"
+                            android:textColor="#817C7C"
+                            android:textSize="13dp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="邮箱："
+                            android:textColor="#817C7C"
+                            android:textSize="13dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/text_company_email"
+                            android:text="待完善"
+                            android:textColor="#817C7C"
+                            android:textSize="13dp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        app:layout_constraintTop_toBottomOf="@id/btn_company_info"
-        android:layout_margin="3dp"
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:id="@+id/btn_user_mobile_bind"
-        android:textColor="@color/black"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/circle_button"
-        android:text="更绑手机号"
-        />
+        android:id="@+id/ll_company_operation"
+        app:layout_constraintTop_toBottomOf="@+id/ll_company_info"
+        android:layout_marginTop="5dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="17dp"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_company_user_auth"
+                android:textColor="@color/white"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/circle_button"
+                android:text="实名认证"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="17dp"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_company_info"
+                android:textColor="@color/white"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/circle_button"
+                android:text="公司信息"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="17dp"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_user_mobile_bind"
+                android:textColor="@color/white"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/circle_button"
+                android:text="更绑手机号"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="17dp"
+                android:layout_margin="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_developer"
+                android:textColor="@color/white"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/circle_button"
+                android:text="关于作者"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
 
     <androidx.appcompat.widget.AppCompatButton
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@id/btn_logout"
-        android:layout_margin="3dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="7dp"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/btn_change_to_student"
-        android:textColor="@color/black"
-        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
         android:background="@drawable/circle_button"
         android:text="切换到学生端"
         />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:textSize="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="3dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/btn_logout"
-        android:textColor="@color/black"
-        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
         android:background="@drawable/circle_button"
         android:text="退出登录"
         />

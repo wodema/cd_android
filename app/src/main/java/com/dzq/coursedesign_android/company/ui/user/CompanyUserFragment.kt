@@ -1,4 +1,4 @@
-package com.dzq.coursedesign_android.company.ui.notifications
+package com.dzq.coursedesign_android.company.ui.user
 
 import android.content.Context
 import android.content.Intent
@@ -10,17 +10,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import com.dzq.coursedesign_android.R
-import com.dzq.coursedesign_android.company.CompanyInfoSaveActivity
-import com.dzq.coursedesign_android.CompanyLoginActivity
+import com.dzq.coursedesign_android.company.CompanyInfoActivity
+import com.dzq.coursedesign_android.LoginActivity
 import com.dzq.coursedesign_android.databinding.FragmentCompanyUserBinding
 import com.dzq.coursedesign_android.entity.CompanyUser
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.http.CompanyUserHttp
+import com.dzq.coursedesign_android.student.StudentMainActivity
 import com.dzq.coursedesign_android.utils.GsonUtil
 
 class CompanyUserFragment : Fragment() {
@@ -30,6 +32,8 @@ class CompanyUserFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var companyUser: CompanyUser
 
     private val bindMobileHandler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -81,23 +85,26 @@ class CompanyUserFragment : Fragment() {
         _binding = FragmentCompanyUserBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        root.context.getSharedPreferences("company_user", Context.MODE_PRIVATE).getString("data", null)?.apply {
+            companyUser = GsonUtil.fromJson(this)
+        }
+
         initView(root)
 
         return root
     }
 
     private fun initView(root: View) {
-        // 注销
-        root.findViewById<AppCompatButton>(R.id.btn_logout).setOnClickListener {
-            context?.getSharedPreferences("company_user", Context.MODE_PRIVATE)?.edit()?.apply {
-                clear()
-                apply()
-            }
-            Intent(context, CompanyLoginActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(this)
-            }
+        companyUser.companyInfo?.companyName?.let {
+            root.findViewById<TextView>(R.id.text_company_name).text = it
         }
+        companyUser.companyInfo?.companyMobile?.let {
+            root.findViewById<TextView>(R.id.text_company_mobile).text = it
+        }
+        companyUser.companyInfo?.companyEmail?.let {
+            root.findViewById<TextView>(R.id.text_company_email).text = it
+        }
+
 
         // 更绑手机号
         root.findViewById<AppCompatButton>(R.id.btn_user_mobile_bind).setOnClickListener {
@@ -161,10 +168,52 @@ class CompanyUserFragment : Fragment() {
         root.findViewById<AppCompatButton>(R.id.btn_company_info).setOnClickListener {
             context?.getSharedPreferences("company_user", Context.MODE_PRIVATE)?.apply {
                 val companyUser = GsonUtil.fromJson<CompanyUser>(getString("data", null))
-                Intent(context, CompanyInfoSaveActivity::class.java).apply {
+                Intent(context, CompanyInfoActivity::class.java).apply {
                     putExtra("companyInfo", companyUser.companyInfo)
                     startActivity(this)
                 }
+            }
+        }
+
+        // 作者
+        root.findViewById<AppCompatButton>(R.id.btn_developer).setOnClickListener {
+            context?.let { it1 ->
+                AlertDialog.Builder(it1)
+                    .setTitle("作者")
+                    .setPositiveButton("确认") { _, _ -> }
+                    .setMessage("3119005136戴梓庆")
+                    .create()
+                    .show()
+            }
+        }
+
+        // 切换到学生端
+        root.findViewById<AppCompatButton>(R.id.btn_change_to_student).setOnClickListener {
+            val studentJson = context?.getSharedPreferences("student_user", Context.MODE_PRIVATE)
+                ?.getString("data", null)
+            if (studentJson == null) {
+                Intent(context, LoginActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    context?.startActivity(this)
+                }
+            } else {
+                Intent(context, StudentMainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    context?.startActivity(this)
+                }
+            }
+        }
+
+
+        // 注销
+        root.findViewById<AppCompatButton>(R.id.btn_logout).setOnClickListener {
+            context?.getSharedPreferences("company_user", Context.MODE_PRIVATE)?.edit()?.apply {
+                clear()
+                apply()
+            }
+            Intent(context, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(this)
             }
         }
     }

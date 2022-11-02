@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_marginHorizontal="5dp"
         android:layout_marginTop="5dp">
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,6 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginVertical="5dp"
+
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -30,8 +31,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="公司信息"
                         android:layout_marginStart="7dp"
-                        android:text="职位信息"
                         android:textStyle="bold"
                         android:textSize="16sp"
                         android:textColor="#358EFA"
@@ -44,13 +45,43 @@
                     android:background="#f3f3f3"/>
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="80dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="7dp"
+                        android:text="公司Logo："
+                        android:textStyle="bold"
+                        android:layout_gravity="top"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+                        <androidx.constraintlayout.utils.widget.ImageFilterView
+                            android:clickable="true"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_margin="8dp"
+                            android:id="@+id/img_company_logo"
+                            android:scaleType="centerCrop"
+                            app:roundPercent="1"
+                            android:src="@drawable/company_logo"
+                            tools:ignore="ImageContrastCheck"
+                            android:focusable="true" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="30dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginStart="7dp"
-                        android:text="职位名称："
+                        android:text="公司名称："
                         android:textStyle="bold"
                         android:layout_gravity="top"
                         android:textColor="@color/black"
@@ -61,11 +92,11 @@
                         android:gravity="end">
                         <EditText
                             android:layout_marginEnd="10dp"
-                            android:id="@+id/company_position_name"
+                            android:id="@+id/edit_company_name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textStyle="normal"
-                            android:hint="请输入职位名称"
+                            android:hint="请输入公司名称"
                             android:textAlignment="textEnd"
                             android:background="@color/white"
                             android:textSize="16sp"
@@ -85,7 +116,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginStart="7dp"
-                        android:text="职位薪资："
+                        android:text="公司地址："
                         android:textStyle="bold"
                         android:layout_gravity="top"
                         android:textColor="@color/black"
@@ -96,46 +127,11 @@
                         android:gravity="end">
                         <EditText
                             android:layout_marginEnd="10dp"
-                            android:id="@+id/company_position_salary"
+                            android:id="@+id/edit_company_address"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textStyle="normal"
-                            android:hint="请输入职位薪资(3k-6k或面议)"
-                            android:textAlignment="textEnd"
-                            android:background="@color/white"
-                            android:textSize="16sp"
-                            android:inputType="text" />
-                    </LinearLayout>
-                </LinearLayout>
-                <View
-                    android:layout_marginTop="3dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#f3f3f3"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="7dp"
-                        android:gravity="center_vertical"
-                        android:text="工作地点："
-                        android:textStyle="bold"
-                        android:layout_gravity="top"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="end">
-                        <EditText
-                            android:layout_marginEnd="10dp"
-                            android:id="@+id/company_position_city"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textStyle="normal"
-                            android:hint="请输入工作地点"
+                            android:hint="请输入公司地址"
                             android:textAlignment="textEnd"
                             android:background="@color/white"
                             android:textSize="16sp"
@@ -155,7 +151,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginStart="7dp"
-                        android:text="学历要求："
+                        android:text="公司号码："
                         android:textStyle="bold"
                         android:layout_gravity="top"
                         android:textColor="@color/black"
@@ -166,11 +162,11 @@
                         android:gravity="end">
                         <EditText
                             android:layout_marginEnd="10dp"
-                            android:id="@+id/company_position_education"
+                            android:id="@+id/edit_company_mobile"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textStyle="normal"
-                            android:hint="请输入学历要求"
+                            android:hint="请输入公司号码"
                             android:textAlignment="textEnd"
                             android:background="@color/white"
                             android:textSize="16sp"
@@ -190,7 +186,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginStart="7dp"
-                        android:text="专业要求："
+                        android:text="公司邮箱："
                         android:textStyle="bold"
                         android:layout_gravity="top"
                         android:textColor="@color/black"
@@ -201,11 +197,11 @@
                         android:gravity="end">
                         <EditText
                             android:layout_marginEnd="10dp"
-                            android:id="@+id/company_position_major"
+                            android:id="@+id/edit_company_email"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textStyle="normal"
-                            android:hint="请输入专业要求"
+                            android:hint="请输入公司邮箱"
                             android:textAlignment="textEnd"
                             android:background="@color/white"
                             android:textSize="16sp"
@@ -225,7 +221,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginStart="7dp"
-                        android:text="招聘人数："
+                        android:text="公司网站："
                         android:textStyle="bold"
                         android:layout_gravity="top"
                         android:textColor="@color/black"
@@ -236,71 +232,18 @@
                         android:gravity="end">
                         <EditText
                             android:layout_marginEnd="10dp"
-                            android:id="@+id/company_position_number"
+                            android:id="@+id/edit_company_website"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textStyle="normal"
-                            android:hint="请输入招聘人数"
+                            android:hint="请输入公司网站"
                             android:textAlignment="textEnd"
                             android:background="@color/white"
                             android:textSize="16sp"
                             android:inputType="text" />
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="5dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginVertical="5dp"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="职位要求"
-                        android:layout_marginStart="7dp"
-                        android:textStyle="bold"
-                        android:layout_gravity="top"
-                        android:textColor="#358EFA"
-                        android:textSize="16sp"/>
-                </LinearLayout>
-                <View
-                    android:layout_marginTop="3dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#f3f3f3"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <EditText
-                        android:layout_marginEnd="10dp"
-                        android:id="@+id/company_position_requirement"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textStyle="normal"
-                        android:gravity="top"
-                        android:hint="请输入职位要求"
-                        android:paddingHorizontal="7dp"
-                        android:paddingTop="5dp"
-                        android:minLines="8"
-                        android:maxLines="10"
-                        android:background="@drawable/edit_text_selector"
-                        android:textSize="16sp"
-                        android:inputType="textMultiLine" />
-                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -318,7 +261,6 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginVertical="5dp"
                 android:orientation="vertical">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
@@ -329,7 +271,7 @@
                         android:layout_gravity="top"
                         android:layout_marginStart="7dp"
                         android:gravity="center_vertical"
-                        android:text="岗位责任"
+                        android:text="公司介绍"
                         android:textColor="#358EFA"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -344,23 +286,23 @@
                     android:layout_height="wrap_content">
                     <EditText
                         android:layout_marginEnd="10dp"
-                        android:id="@+id/company_position_responsibility"
+                        android:id="@+id/edit_company_introduction"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textStyle="normal"
-                        android:paddingTop="5dp"
-                        android:paddingHorizontal="7dp"
                         android:gravity="top"
-                        android:hint="请输入岗位责任"
+                        android:paddingHorizontal="7dp"
+                        android:paddingTop="5dp"
+                        android:hint="请输入公司介绍"
                         android:minLines="8"
                         android:maxLines="10"
                         android:background="@drawable/edit_text_selector"
                         android:textSize="16sp"
                         android:inputType="textMultiLine" />
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
 
 
 
@@ -376,7 +318,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/btn_company_position_save"
+                android:id="@+id/btn_company_info_save"
                 android:textColor="@color/white"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/circle_button"

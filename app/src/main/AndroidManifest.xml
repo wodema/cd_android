@@ -19,9 +19,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
         <activity
+            android:name=".student.PositionDetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_position_detail" />
+        <activity
             android:name=".student.StudentMainActivity"
             android:exported="false"
             android:label="@string/title_activity_student_main" />
+        <activity
+            android:name=".student.StudentInfoActivity"
+            android:exported="false"
+            android:label="@string/title_activity_student_info" />
+        <activity
+            android:name=".student.StudentResumeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_student_resume" />
+        <activity
+            android:name=".company.StudentDetailsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_student_details" />
         <activity
             android:name=".company.CompanyMainActivity"
             android:exported="false"
@@ -31,11 +47,11 @@
             android:exported="false"
             android:label="@string/title_activity_company_position_save" />
         <activity
-            android:name=".company.CompanyInfoSaveActivity"
+            android:name=".company.CompanyInfoActivity"
             android:exported="false"
             android:label="@string/title_activity_company_info_save" />
         <activity
-            android:name=".CompanyLoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

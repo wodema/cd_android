@@ -3,98 +3,153 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_style">
 
-    
-    <EditText
-        android:id="@+id/edit_login_mobile"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:hint="请输入手机号"
-        android:inputType="phone"
-        android:text="17728852235"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/edit_login_authCode"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="手机号："
-        android:textColor="@color/black"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edit_login_mobile"
-        app:layout_constraintEnd_toStartOf="@+id/edit_login_mobile"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="验证码："
-        android:textColor="@color/black"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edit_login_authCode"
-        app:layout_constraintEnd_toStartOf="@+id/edit_login_authCode"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_login_authCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="请输入验证码"
-        android:text="1"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/edit_login_mobile"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_sms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@id/edit_login_authCode"
-        app:layout_constraintStart_toEndOf="@id/edit_login_authCode"
-        android:text="获取验证码"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:background="@drawable/circle_button"
-        />
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:onClick="login"
-        android:text="登录"
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="400dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_login_authCode" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp">
 
-    <RadioGroup
-        android:id="@+id/grp_user_type"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/edit_login_authCode"
-        app:layout_constraintBottom_toTopOf="@id/btn_login"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FDFDFD"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_horizontal">
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icon_login"
+                    />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/rb_company"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:checked="true"
-            android:text="公司端" />
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center">
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@+id/img_login_icon"
+                    android:layout_gravity="center"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/company_login"
+                    android:tint="#2196F3"
+                    />
+                <TextView
+                    android:id="@+id/text_login_info"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#2196F3"
+                    android:text="单位登录"
+                    />
+            </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/rb_student"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="学生端" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center">
 
-    </RadioGroup>
+                <EditText
+                    android:id="@+id/edit_login_mobile"
+                    android:layout_height="35dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:paddingStart="5dp"
+                    android:hint="请输入手机号"
+                    android:textColorHint="#BDB8B8"
+                    android:textSize="17sp"
+                    android:inputType="phone"
+                    android:background="@drawable/edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/edit_login_authCode"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:gravity="center">
+                    <EditText
+                        android:id="@+id/edit_login_authCode"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="35dp"
+                        android:paddingStart="5dp"
+                        android:hint="请输入验证码"
+                        android:textSize="17sp"
+                        android:textColorHint="#BDB8B8"
+                        android:background="@drawable/edit_text"/>
+                    <TextView
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:id="@+id/text_sms"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:text="获取验证码"
+                        android:textColor="#358EFA" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:background="@drawable/circle_button_gray"
+                    android:id="@+id/btn_change_login_type"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="切换学生登录" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:background="@drawable/circle_button"
+                    android:id="@+id/btn_login"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="登录" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@ package com.dzq.coursedesign_android.http
 
 import android.os.Handler
 import android.os.Message
-import android.util.Log
+import com.dzq.coursedesign_android.entity.CompanyPosition
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.entity.Student
 import com.dzq.coursedesign_android.utils.GsonUtil
@@ -12,26 +12,31 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-object StudentHttp {
+object ResumeHttp {
+
+
     private val client: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(10, TimeUnit.SECONDS)
         .readTimeout(10, TimeUnit.SECONDS)
         .writeTimeout(10, TimeUnit.SECONDS)
         .build()
 
-    private val BASE_URL = "http://192.168.1.104/student"
+    private val BASE_URL = "http://192.168.1.104/resume"
 
-    fun smsSignin(mobile: String, authCode: String, handler: Handler) {
-        val body = FormBody.Builder()
-            .add("mobile", mobile)
-            .add("authCode", authCode)
+    fun applyPosition(
+        companyPosition: CompanyPosition,
+        student: Student,
+        handler: Handler
+    ) {
+        val request: Request
+        val requestBody = GsonUtil.objToJson(companyPosition)
+            .toRequestBody("application/json".toMediaTypeOrNull())
+        request = Request.Builder()
+            .url("$BASE_URL?studentId=${student.id}")
+            .post(requestBody)
             .build()
 
-        val request: Request = Request.Builder()
-            .url("$BASE_URL/sms/signin")
-            .post(body)
-            .build()
-        return client.newCall(request).enqueue(
+        client.newCall(request).enqueue(
             object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     e.printStackTrace()
@@ -52,26 +57,10 @@ object StudentHttp {
         )
     }
 
-    fun signin(userEmail: String, password: String): Response {
-        val body = FormBody.Builder()
-            .add("email", userEmail)
-            .add("password", password)
-            .build()
-
+    fun getCompanyResumeList(companyId: Int, handler: Handler) {
         val request: Request = Request.Builder()
-            .url("$BASE_URL/signin")
-            .post(body)
-            .build()
-        return client.newCall(request).execute()
-    }
-
-    fun save(student: Student, handler: Handler) {
-        Log.e("asdladksjklas", GsonUtil.objToJson(student))
-        val requestBody = GsonUtil.objToJson(student)
-            .toRequestBody("application/json".toMediaTypeOrNull())
-        val request = Request.Builder()
-            .url(BASE_URL)
-            .put(requestBody)
+            .url("$BASE_URL/company?companyId=$companyId")
+            .get()
             .build()
         client.newCall(request).enqueue(
             object : Callback {
@@ -94,9 +83,10 @@ object StudentHttp {
         )
     }
 
-    fun getStudent(studentId: Int, handler: Handler) {
-        val request = Request.Builder()
-            .url("$BASE_URL/$studentId")
+    fun getStudentResumeList(studentId: Int, handler: Handler) {
+        val request: Request = Request.Builder()
+            .url("$BASE_URL/student?studentId=$studentId")
+            .get()
             .build()
         client.newCall(request).enqueue(
             object : Callback {

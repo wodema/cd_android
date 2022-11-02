@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,7 +13,6 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.utils.widget.ImageFilterView
@@ -23,15 +21,13 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.dzq.coursedesign_android.R
 import com.dzq.coursedesign_android.entity.CompanyInfo
-import com.dzq.coursedesign_android.entity.CompanyPosition
 import com.dzq.coursedesign_android.entity.CompanyUser
 import com.dzq.coursedesign_android.entity.Result
 import com.dzq.coursedesign_android.http.CompanyInfoHttp
-import com.dzq.coursedesign_android.http.CompanyPositionHttp
 import com.dzq.coursedesign_android.http.OssHttp
 import com.dzq.coursedesign_android.utils.GsonUtil
 
-class CompanyInfoSaveActivity: AppCompatActivity() {
+class CompanyInfoActivity: AppCompatActivity() {
 
     private var companyInfo = CompanyInfo()
     private lateinit var companyNameEditText: EditText
@@ -52,7 +48,7 @@ class CompanyInfoSaveActivity: AppCompatActivity() {
                 200 -> {
                     val result = msg.obj as Result
                     companyInfo.companyLogo = result.data as String
-                    Glide.with(this@CompanyInfoSaveActivity)
+                    Glide.with(this@CompanyInfoActivity)
                         .load(companyInfo.companyLogo)
                         .into(companyLogoImageFilterView)
                     Toast.makeText(applicationContext, "上传成功", Toast.LENGTH_SHORT).show()
@@ -90,7 +86,7 @@ class CompanyInfoSaveActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.company_info_save)
+        setContentView(R.layout.activity_company_info)
         initView()
         intent.getParcelableExtra<CompanyInfo?>("companyInfo")?.apply {
             companyNameEditText.setText(this.companyName)
@@ -100,7 +96,7 @@ class CompanyInfoSaveActivity: AppCompatActivity() {
             companyIntroductionEditText.setText(this.companyIntroduction)
             companyEmailEditText.setText(this.companyEmail)
             if (this.companyLogo != null) {
-                Glide.with(this@CompanyInfoSaveActivity)
+                Glide.with(this@CompanyInfoActivity)
                     .load(this.companyLogo)
                     .into(companyLogoImageFilterView)
             }
@@ -130,7 +126,7 @@ class CompanyInfoSaveActivity: AppCompatActivity() {
                 type = "image/*"
                 startActivityForResult(this, IMAGE_REQUEST_CODE)
             }
-            Toast.makeText(applicationContext, "点击了图片", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, "点击了图片", Toast.LENGTH_SHORT).show()
         }
     }
 
